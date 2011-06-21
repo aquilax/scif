@@ -1,0 +1,12 @@
+body{font-family:arial, serif;background-color: #ffa; font-size:10pt}
+#forum{width:100%;}
+#forum td{vertical-align:top}
+#forum ul{padding-left:1em; list-style-position:inside}
+#forum li{padding:0 4px;}
+#forum li:hover{background:#faa}
+#forum li ul li:hover{background:#faf}
+#post table {width:500px}
+#post input, #post textarea{width:100%}
+#post input.radio{width:auto}
+#namef{display:none}
+.ar{text-align:right}

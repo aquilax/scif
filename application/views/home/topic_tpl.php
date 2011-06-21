@@ -26,7 +26,7 @@ function tgl(elem, max) {
     echo '<p>';
     if ($row['tripcode']){
       echo '[<b>'.$row['tripcode'].'</b>]';
-      echo ' ['.anchor('edit/'.$row['forum_id'].'/'.$row['id'], lang('редакция'), 'rel="nofollow"').']';
+      echo ' ['.anchor('edit/'.$row['forum_id'].'/'.$row['id'], lang('edit'), 'rel="nofollow"').']';
     }
     echo ' <em>'.date('d-m-Y H:i', mysql_to_unix($row['created'])).'</em>';
     echo ' '.anchor(current_url().'#'.$row['id'], '#'.$row['id']);
@@ -41,35 +41,7 @@ function tgl(elem, max) {
     $ptitle = '';  
   }
 
-  echo '<div id="post">';
-  echo validation_errors();
-  echo form_open(current_url().'#post');
-  echo '<div id="namef">0ставете това поле празно <input type="text" name="name" value="" id="namef" /></div>'; 
-  echo '<table>';
-  echo '<tr>';
-  echo '<td colspan="2">';
-  echo lang('Заглавие', 'title').' <em title="'.lang('Задължително').'">*</em><br/>';
-  echo form_input('title', set_value('title', $ptitle), 'id="title" size="60"').'<br/>';
-  echo '</td>';
-  echo '</tr>';
-  echo '<tr>';
-  echo '<td colspan="2">';
-  echo form_textarea(array('name' => 'body', 'value' => set_value('body'), 'cols'=>'60', 'rows'=>'10'));
-  echo '</td>';
-  echo '</tr>';
-  echo '<tr>';
-  echo '<td>За да вмъкнете изображение, напишете URL с <b>i</b> отпред <b>ihttp://</b></td>';
-  echo '</tr>';
-  echo '<tr>';
-  echo '<td>';
-  echo lang('Парола (по желание за трипкод)', 'password').'<br />';
-  echo form_password('password', '', 'size="60" id="password"');
-  echo '</td>';
-  echo '<td valign="bottom" width="100px">';
-  echo form_submit('post', lang('Публикувай'), 'onclick="this.disabled=true;this.form.submit()"');
-  echo '</td>';
-  echo '</table>';
-  echo form_close();
-  echo '</div>';
+  $this->load->view('partials/post_form_tpl');
+
 ?>
 

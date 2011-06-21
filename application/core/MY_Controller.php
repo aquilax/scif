@@ -10,7 +10,7 @@ class MY_Controller extends CI_Controller {
     $this->load->model('forum_model');
     $this->_getDomain();
     $this->_loadDefaults();
-    $this->output->enable_profiler(TRUE);
+    //$this->output->enable_profiler(TRUE);
   }
 
   private function _getDomain() {
@@ -26,8 +26,9 @@ class MY_Controller extends CI_Controller {
     $this->action_name = $this->router->fetch_method();
 
     $site_title = $this->forum_model->getd('title');
-    $this->data['title'] = $site_title?$site_title:'Page Title';
+    $this->data['site_title'] = $site_title?$site_title:'Forum';
 
+    $this->data['title'] = 'Page Title';    
     $this->data['descr'] = 'Page Description';
     $this->data['heading'] = 'Page Heading';
     $this->data['content'] = '';
