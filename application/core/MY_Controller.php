@@ -10,6 +10,7 @@ class MY_Controller extends CI_Controller {
     $this->load->model('forum_model');
     $this->_getDomain();
     $this->_loadDefaults();
+    $this->output->enable_profiler(TRUE);
   }
 
   private function _getDomain() {
