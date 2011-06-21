@@ -36,7 +36,7 @@ class Forum_Model extends CI_Model {
     return $query->result_array();
   }
 
-  function getForum($forum_id){
+  public function getForum($forum_id){
     $domain_id = $this->getd('domain_id');
     $this->db->where('domain_id', $domain_id);
     $this->db->where('status', 1);
@@ -48,6 +48,7 @@ class Forum_Model extends CI_Model {
   public function getTopics($forum_id, $start, $offset){
     $this->db->where('forum_id', $forum_id);
     $this->db->where('status', 1);
+    $this->db->where('pid', 0);
     $this->db->limit($start, $offset);
     $query = $this->db->get('post p');
     return $query->result_array();
@@ -62,13 +63,24 @@ class Forum_Model extends CI_Model {
   }
 
   public function getPosts($topic_id){
-    $this->db->where('id', $topic_id);
     $this->db->where('status', 1);
+    $this->db->where('id', $topic_id);
+    $this->db->or_where('pid', $topic_id);
     $this->db->order_by('pid');
     $this->db->order_by('created');
     $query = $this->db->get('post p');
     return $query->result_array();
   }
+
+  public function getPost($forum_id, $topic_id){
+    $this->db->where('id', $topic_id);
+    $this->db->where('forum_id', $forum_id);
+    $this->db->where('status', 1);
+    $this->db->limit(1);
+    $query = $this->db->get('post p');
+    return $query->row_array();
+  }
+  
 
 }
 

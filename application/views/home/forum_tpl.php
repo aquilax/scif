@@ -1,6 +1,6 @@
 <?php
 
-echo '<p>['.anchor('', lang('New topic')).']</p>';
+echo '<p>['.anchor('topic/'.$forum_id, lang('New topic')).']</p>';
 
 echo $this->pagination->create_links();
 
