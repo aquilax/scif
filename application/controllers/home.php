@@ -151,7 +151,19 @@ class Home extends MY_Controller {
         redirect('topic/'.$forum_id.'/'.$topic_id);
       }
     }
+  }
 
+  function feed(){
+    $this->data['posts'] = $this->forum_model->getPostsForDomain($this->domain_id, 30);
+
+    $this->load->helper(array('xml', 'date'));
+    $this->data['encoding'] = 'utf-8';
+    $this->data['feed_url'] = site_url();
+    $this->data['page_description'] = $this->forum_model->getd('title');
+    $this->data['page_language'] = 'bg';
+    $this->data['creator_email'] = 'example@example.com';
+    $this->output->set_header("Content-Type: application/rss+xml");
+    $this->load->view('layouts/feed_tpl', $this->data);
   }
 
 }

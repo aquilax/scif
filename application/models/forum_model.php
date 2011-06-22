@@ -111,6 +111,16 @@ class Forum_Model extends CI_Model {
     }
   }
 
+  public function getPostsForDomain($domain_id, $limit = 30){
+    $this->db->select('p.*');
+    $this->db->join('forum f', 'f.id = p.forum_id');
+    $this->db->where('f.domain_id', $domain_id);
+    $this->db->order_by('p.created', 'DESC');
+    $this->db->limit($limit);
+    $query = $this->db->get('post p');
+    return $query->result_array();
+  }
+
 }
 
 ?>
