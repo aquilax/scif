@@ -150,7 +150,7 @@ class Home extends MY_Controller {
       if($topic_id){
         redirect('topic/'.$forum_id.'/'.$topic_id.'#'.$id);
       } else {
-        redirect('topic/'.$forum_id.'/'.$topic_id);
+        redirect('topic/'.$forum_id.'/'.$id);
       }
     }
   }
