@@ -8,6 +8,7 @@ body{font-family:arial, serif;background-color: #ffa; font-size:10pt}
 #post table {width:500px}
 #post input, #post textarea{width:100%}
 #post input.radio{width:auto}
+#post label{font-weight:bold}
 #namef{display:none}
 .ar{text-align:right}
 .error{color:#f00; font-weight:bold;}

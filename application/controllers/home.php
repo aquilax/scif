@@ -54,7 +54,6 @@ class Home extends MY_Controller {
     }
 
     $this->_processForm($forum_id, $topic_id);
-
     if ($topic_id != 0){
       $this->data['posts'] = $this->forum_model->getPosts($topic_id);
     } else {
@@ -64,7 +63,7 @@ class Home extends MY_Controller {
     $this->data['path']['forum/'.$forum_id] = $this->data['forum']['title'];
 
     if ($this->data['posts']){
-      $ptitle = $this->data['posts'][0]['title'];
+      $ptitle = 'Re:'.$this->data['posts'][0]['title'];
       $this->data['button_title'] = lang('Reply');
       $this->data['path']['topic/'.$forum_id.'/'.$topic_id] = $ptitle;
     } else {
@@ -76,7 +75,7 @@ class Home extends MY_Controller {
     $this->action_name = 'topic';
    
     $this->data['post'] = array(
-      'title' => 'Re:'.$ptitle,
+      'title' => $ptitle,
       'body' => '',
     );
 
