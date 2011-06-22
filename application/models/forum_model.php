@@ -39,7 +39,7 @@ class Forum_Model extends CI_Model {
   public function getForum($forum_id){
     $domain_id = $this->getd('domain_id');
     $this->db->where('domain_id', $domain_id);
-    $this->db->where('forum_id', $forum_id);
+    $this->db->where('id', $forum_id);
     $this->db->where('status', 1);
     $this->db->limit(1);
     $query = $this->db->get('forum');
