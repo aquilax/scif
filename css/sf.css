@@ -16,3 +16,6 @@ hr{border:none; border-top:1px solid #aeaeae}
 .tbl tr.e{background-color:#ffffd0;}
 .tbl td, .tbl th{padding:5px 10px}
 .tbl th{background-color:#bfbf8f; text-align:left;}
+.tbl td a{color:#693}
+.tbl th a{color:#020202}
+.tbl th a:hover{color:#fff}

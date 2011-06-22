@@ -10,7 +10,7 @@ if ($pages){
 }
 $pr .= '</th>';
 $pr .= '<th style="width:150px;text-align:right">';
-$pr .= '['.anchor('topic/'.$forum_id, lang('New topic')).']';
+$pr .= '[ '.anchor('topic/'.$forum_id, lang('New topic')).' ]';
 $pr .= '</th>';
 $pr .= '</tr>';
 
