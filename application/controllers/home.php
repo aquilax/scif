@@ -9,7 +9,8 @@ class Home extends MY_Controller {
 
   function index(){
     $this->data['forums'] = $this->forum_model->getForumsForDomain($this->domain_id);
-    $this->data['title'] = $this->forum_model->getd('title', lang('Forum'));
+    $this->data['title'] = q($this->forum_model->getd('title', lang('Forum')));
+    $this->data['descr'] = $this->forum_model->getd('title', lang('Forum'));
     $this->render();
     }
 
@@ -41,6 +42,7 @@ class Home extends MY_Controller {
     $this->data['title'] = q($this->data['forum']['title']);
     $this->data['descr'] = $this->data['title'];
     $this->data['path']['forum/'.$forum_id] = $this->data['forum']['title'];
+    $this->load->helper('date');
     $this->action_name = 'forum';
     $this->render();
   }
