@@ -28,6 +28,9 @@ class MY_Controller extends CI_Controller {
     $site_title = $this->forum_model->getd('title');
     $this->data['site_title'] = $site_title?$site_title:'Forum';
 
+    $this->data['pre_posts'] = $this->forum_model->getd('pre_text');
+    $this->data['post_posts'] = $this->forum_model->getd('post_text');
+
     $this->data['title'] = 'Page Title';    
     $this->data['descr'] = 'Page Description';
     $this->data['heading'] = 'Page Heading';

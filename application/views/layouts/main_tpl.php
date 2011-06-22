@@ -7,7 +7,8 @@
 <link rel="stylesheet" type="text/css" media="screen" href="/css/sf.css" />
 </head>
 <body itemscope="itemscope" itemtype="http://schema.org/WebPage">
-<?php 
+<div id="forum">
+<?php
 echo '<h1>'.anchor('/', $site_title).'</h1>';
 echo '<hr />';
 if (isset($path) && count($path) > 1){
@@ -24,9 +25,12 @@ if (isset($path) && count($path) > 1){
   echo '</div>';
   echo '<hr />';
 }
+echo $pre_posts;
 echo $content;
+echo $post_posts;
 ?>
 <hr/>
 <p class="ar">Powered by <a href="http://github.com/aquilax/scif">scif</a></p>
+</div>
 </body>
 </html>
