@@ -81,6 +81,35 @@ class Forum_Model extends CI_Model {
     return $query->row_array();
   }
   
+  function save($forum_id, $topic_id, $post, $action){
+    $data = array(
+      'title' => $post['title'],
+      'body' => $post['body'],
+    );
+    if ($action == 'insert'){
+      $data['forum_id'] = $forum_id;
+      $data['pid'] = $topic_id;
+      $data['tripcode'] = $post['password'];
+      $data['status'] = 1;
+      $this->db->set($data);
+      $this->db->set('updated', 'CURRENT_TIMESTAMP', FALSE);
+      $this->db->insert('post');
+      $id = $this->db->insert_id();
+      if($topic_id){
+        $this->db->set('updated', 'CURRENT_TIMESTAMP', FALSE);
+        $this->db->where('id', $topic_id);
+        $this->db->update('post');
+      }
+      return $id;
+    } else {
+      $this->db->set($data);
+      $this->db->set('updated', 'CURRENT_TIMESTAMP', FALSE);
+      $this->db->where('id', $topic_id);
+      $this->db->where('forum_id', $forum_id);
+      $this->db->update('post');
+      return $topic_id;
+    }
+  }
 
 }
 

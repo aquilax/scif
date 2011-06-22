@@ -33,7 +33,6 @@ class MY_Controller extends CI_Controller {
     $this->data['heading'] = 'Page Heading';
     $this->data['content'] = '';
     $this->data['path'] = array();
-    $this->data['path']['home'] = lang('Home'); 
   }
 
   protected function render($template = 'main'){

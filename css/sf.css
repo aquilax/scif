@@ -10,3 +10,5 @@ body{font-family:arial, serif;background-color: #ffa; font-size:10pt}
 #post input.radio{width:auto}
 #namef{display:none}
 .ar{text-align:right}
+.error{color:#f00; font-weight:bold;}
+hr{border:none; border-top:1px solid #aeaeae}

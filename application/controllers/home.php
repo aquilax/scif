@@ -2,11 +2,16 @@
 
 class Home extends MY_Controller {
 
-  function index(){
-    $this->data['forums'] = $this->forum_model->getForumsForDomain($this->domain_id);
-    $this->render();
+  function __construct(){
+    parent::__construct();
     $this->data['path']['/'] = lang('Home');
   }
+
+  function index(){
+    $this->data['forums'] = $this->forum_model->getForumsForDomain($this->domain_id);
+    $this->data['title'] = $this->forum_model->getd('title', lang('Forum'));
+    $this->render();
+    }
 
   function forum(){
     $forum_id = (int)$this->uri->segment(2);
@@ -48,6 +53,8 @@ class Home extends MY_Controller {
       show_404();
     }
 
+    $this->_processForm($forum_id, $topic_id);
+
     if ($topic_id != 0){
       $this->data['posts'] = $this->forum_model->getPosts($topic_id);
     } else {
@@ -66,12 +73,10 @@ class Home extends MY_Controller {
       $this->data['path']['topic/'.$forum_id] = lang('New topic');
     }
 
-    $this->load->library('form_validation'); 
-
     $this->action_name = 'topic';
    
     $this->data['post'] = array(
-      'title' => $ptitle,
+      'title' => 'Re:'.$ptitle,
       'body' => '',
     );
 
@@ -95,6 +100,8 @@ class Home extends MY_Controller {
       show_404();
     }
 
+    $this->_processForm($forum_id, $this->data['post']['id'], $this->data['post']['tripcode'], 'edit');
+
     $this->data['path']['forum/'.$forum_id] = $this->data['forum']['title'];
     $this->data['path']['topic/'.$forum_id.'/'.$topic_id] = $this->data['post']['title'];
     $this->data['path']['edit/'.$forum_id.'/'.$topic_id] = lang('Edit');
@@ -103,6 +110,41 @@ class Home extends MY_Controller {
     $this->load->helper(array('date', 'form'));
     $this->action_name = 'edit';
     $this->render();
+  }
+
+  function _processForm($forum_id, $topic_id, $tripcode='', $action = 'insert'){
+    $this->load->library('form_validation'); 
+    $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+    $this->form_validation->set_rules('name', lang('Name'), 'trim');
+    $this->form_validation->set_rules('title', lang('Title'), 'strip_tags|trim|required|min_length[3]|max_length[150]');
+    if ($action == 'edit'){
+      $this->form_validation->set_rules('password', lang('Password'), 'required|mktripcode');
+    } else {
+      $this->form_validation->set_rules('password', lang('Password'), 'mktripcode');
+    }
+    $this->form_validation->set_rules('body', lang('Text'), 'strip_tags|trim|required|min_length[10]'); 
+
+    if ($this->form_validation->run()){
+      $name = $this->input->post('name');
+      if ($name){
+        redirect('forum/'.$forum_id);
+      }
+      
+      if ($action == 'edit'){
+        if ($tripcode != $_POST['password']){
+          $this->form_validation->_error_array[] = lang('Wrong password');
+          return;
+        }
+      }
+      
+      $id = $this->forum_model->save($forum_id, $topic_id, $_POST, $action);
+      if($topic_id){
+        redirect('topic/'.$forum_id.'/'.$topic_id.'#'.$id);
+      } else {
+        redirect('topic/'.$forum_id.'/'.$topic_id);
+      }
+    }
+
   }
 
 }
