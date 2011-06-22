@@ -1,6 +1,5 @@
 body{font-family:arial, serif;background-color: #ffa; font-size:10pt}
 #forum{margin:0 10%;}
-#forum td{vertical-align:top}
 #forum ul{padding-left:1em; list-style-position:inside}
 #forum li{padding:0 4px;}
 #forum li:hover{background:#faa}
