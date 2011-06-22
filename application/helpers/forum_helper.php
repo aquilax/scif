@@ -16,16 +16,16 @@ function slug($text){
                'F','H','C','CH','SH','SHT','Y','Y','YU','YA',
                'a','b','v','g','d','e','j','z','i','y',
                'k','l','m','n','o','p','r','s','t','u',
-               'f','h','c','ch','sh','sht','y','y','yu','ya', '_',
+               'f','h','c','ch','sh','sht','y','y','yu','ya', '-',
                '0','1','2','3','4','5','6','7','8','9');
   $str =  strtolower(str_replace($bg, $en, $text));
   $str1 = '';
   for($a=0; $a < strlen($str); $a++){
-    $c = ord(substr($str,$a,1));
+    $c = ord(substr($str, $a, 1));
     if (($c >= 48) && ($c <= 57) or
        ($c >= 97) &&  ($c <= 122) or
-       ($c == 95)){    
-      $str1 .= substr($str,$a,1);
+       ($c == 95) or ($c == 45)){    
+      $str1 .= substr($str, $a, 1);
     }
   }
   return substr($str1, 0, 90);
