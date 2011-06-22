@@ -1,17 +1,19 @@
 <?php
 
-echo '<p>['.anchor('topic/'.$forum_id, lang('New topic')).']</p>';
 
 $pages = $this->pagination->create_links();
 $pr = '';
+$pr .= '<tr>';
+$pr .= '<th>';
 if ($pages){
-  $pr .= '<tr>';
-  $pr .= '<th>';
   $pr .= lang('Pages').': '.$pages;
-  $pr .= '</th>';
-  $pr .= '<th style="width:150px;">&nbsp;</th>';
-  $pr .= '</tr>';
 }
+$pr .= '</th>';
+$pr .= '<th style="width:150px;text-align:right">';
+$pr .= '['.anchor('topic/'.$forum_id, lang('New topic')).']';
+$pr .= '</th>';
+$pr .= '</tr>';
+
 
 if ($topics){
   echo '<table class="tbl">';
