@@ -50,6 +50,7 @@ class Forum_Model extends CI_Model {
     $this->db->where('forum_id', $forum_id);
     $this->db->where('status', 1);
     $this->db->where('pid', 0);
+    $this->db->order_by('updated','DESC');
     $this->db->limit($start, $offset);
     $query = $this->db->get('post p');
     return $query->result_array();
