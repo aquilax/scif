@@ -13,6 +13,17 @@ $pr .= '[ '.anchor('topic/'.$forum_id, lang('New topic')).' ]';
 $pr .= '</th>';
 $pr .= '</tr>';
 
+function topicDate($date){
+  if (time() - $date < 86400){
+    echo '<td class="ar b" title="'.lang('Updated in the last 24h').'">';
+  } else {
+    echo '<td class="ar">';
+  }
+  echo date('d.m.Y H:i', $date);
+  echo '</td>';
+  
+}
+
 echo '<table class="tbl">';
 echo $pr;
 if ($topics){
@@ -26,9 +37,8 @@ if ($topics){
     echo '<td>';
       echo anchor('topic/'.$row['forum_id'].'/'.$row['id'].'/'.slug($row['title']), $row['title']);
     echo '</td>';
-    echo '<td class="ar">';
-      echo $row['updated']?date('d.m.Y H:i', mysql_to_unix($row['updated'])):date('d.m.Y H:i', mysql_to_unix($row['created']));
-    echo '</td>';
+    echo topicDate(mysql_to_unix($row['updated']));
+    
     echo '</tr>';
   }
 } else {

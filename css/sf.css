@@ -12,6 +12,7 @@ a{color:#231}
 #post label{font-weight:bold}
 #namef{display:none}
 .ar{text-align:right}
+.b{font-weight:bold}
 .error{color:#f00; font-weight:bold;}
 hr{border:none; border-top:1px solid #aeaeae}
 .tbl{width:100%}
