@@ -117,6 +117,7 @@ class Forum_Model extends CI_Model {
     $this->db->select('p.*');
     $this->db->join('forum f', 'f.id = p.forum_id');
     $this->db->where('f.domain_id', $domain_id);
+    $this->db->where('p.status', 1);
     $this->db->order_by('p.created', 'DESC');
     $this->db->limit($limit);
     $query = $this->db->get('post p');
