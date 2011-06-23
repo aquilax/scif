@@ -22,7 +22,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
       <title><?php echo xml_convert($entry['title'])?></title>
       <link><?php echo $url?></link>
       <guid><?php echo $url?></guid>
-      <description><![CDATA[<?php echo '<h3>'.anchor($url, $entry['title']).'</h3>'.render($entry['body'])?>]]></description>
+      <description><![CDATA[<?php echo render($entry['body'])?>]]></description>
       <pubDate><?php echo date ('r', mysql_to_unix($entry['created']));?></pubDate>
     </item>
 <?php endforeach; ?>
