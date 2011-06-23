@@ -69,7 +69,7 @@ class Home extends MY_Controller {
     if ($this->data['posts']){
       $ptitle = 'Re:'.$this->data['posts'][0]['title'];
       $this->data['button_title'] = lang('Reply');
-      $this->data['path']['topic/'.$forum_id.'/'.$topic_id] = $ptitle;
+      $this->data['path']['topic/'.$forum_id.'/'.$topic_id] = $this->data['posts'][0]['title'];
       $this->data['title'] = q($this->data['posts'][0]['title']).' &raquo; '.q($this->data['forum']['title']);
       $this->data['descr'] = $this->data['posts'][0]['title'];
     } else {
