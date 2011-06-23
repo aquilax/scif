@@ -1,6 +1,5 @@
 <?php
 
-
 $pages = $this->pagination->create_links();
 $pr = '';
 $pr .= '<tr>';
@@ -34,7 +33,7 @@ if ($topics){
   }
 } else {
   echo '<tr class="e">';
-  echo '<td colspan="2">'.sprintf('This forum is still empty. Please %s something.', anchor('topic/'.$forum_id, lang('write'))).'</td>';
+  echo '<td colspan="2">'.sprintf(lang('This forum is still empty. Please %s something.'), anchor('topic/'.$forum_id, lang('write'))).'</td>';
   echo '</tr>';
 }
 echo $pr;

@@ -12,7 +12,7 @@ class Home extends MY_Controller {
     $this->data['title'] = q($this->forum_model->getd('title', lang('Forum')));
     $this->data['descr'] = $this->forum_model->getd('title', lang('Forum'));
     $this->render();
-    }
+  }
 
   function forum(){
     $forum_id = (int)$this->uri->segment(2);
@@ -159,9 +159,10 @@ class Home extends MY_Controller {
     $this->data['posts'] = $this->forum_model->getPostsForDomain($this->domain_id, 30);
 
     $this->load->helper(array('xml', 'date'));
+    $this->data['title'] = q($this->forum_model->getd('title', lang('Forum')));
+    $this->data['page_description'] = $this->forum_model->getd('title');
     $this->data['encoding'] = 'utf-8';
     $this->data['feed_url'] = site_url();
-    $this->data['page_description'] = $this->forum_model->getd('title');
     $this->data['page_language'] = 'bg';
     $this->data['creator_email'] = 'example@example.com';
     $this->output->set_header("Content-Type: application/rss+xml");
