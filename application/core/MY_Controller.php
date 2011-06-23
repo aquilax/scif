@@ -18,7 +18,7 @@ class MY_Controller extends CI_Controller {
     if (substr($domain, 0, 4) == 'www.') {
       $domain = substr($domain, 4);
     }
-    $domain_id = $this->forum_model->getDomain($domain);
+    $this->domain_id = $this->forum_model->getDomain($domain);
   }
 
   private function _loadDefaults() {
