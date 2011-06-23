@@ -14,10 +14,9 @@ $pr .= '[ '.anchor('topic/'.$forum_id, lang('New topic')).' ]';
 $pr .= '</th>';
 $pr .= '</tr>';
 
-
+echo '<table class="tbl">';
+echo $pr;
 if ($topics){
-  echo '<table class="tbl">';
-  echo $pr;
   $i = 1;
   foreach($topics as $row){
     if ($i++ % 2 == 0){
@@ -33,8 +32,13 @@ if ($topics){
     echo '</td>';
     echo '</tr>';
   }
-  echo $pr;
-  echo '</table>';
+} else {
+  echo '<tr class="e">';
+  echo '<td colspan="2">'.sprintf('This forum is still empty. Please %s something.', anchor('topic/'.$forum_id, lang('write'))).'</td>';
+  echo '</tr>';
 }
+echo $pr;
+echo '</table>';
+
 
 ?>
