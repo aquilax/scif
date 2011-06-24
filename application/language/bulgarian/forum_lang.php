@@ -14,6 +14,7 @@ $lang = array(
   'write' => 'напишете',
   'Post' => 'Публикувай',
   'Updated in the last 24h' => 'Обновена в последните 24ч',
+  'Latest topics' => 'Последни теми',
 );
 
 ?>

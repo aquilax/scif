@@ -9,6 +9,8 @@ class Home extends MY_Controller {
 
   function index(){
     $this->data['forums'] = $this->forum_model->getForumsForDomain($this->domain_id);
+    $this->data['topics'] = $this->forum_model->getPostsForDomain($this->domain_id, 10);
+    
     $this->data['title'] = q($this->forum_model->getd('title', lang('Forum')));
     $this->data['descr'] = $this->forum_model->getd('title', lang('Forum'));
     $this->render();
@@ -42,7 +44,6 @@ class Home extends MY_Controller {
     $this->data['title'] = q($this->data['forum']['title']);
     $this->data['descr'] = $this->data['title'];
     $this->data['path']['forum/'.$forum_id] = $this->data['forum']['title'];
-    $this->load->helper('date');
     $this->action_name = 'forum';
     $this->render();
   }
@@ -87,7 +88,7 @@ class Home extends MY_Controller {
       'body' => '',
     );
 
-    $this->load->helper(array('date', 'form'));
+    $this->load->helper('form');
     $this->render();
   }
 
@@ -116,7 +117,7 @@ class Home extends MY_Controller {
     $this->data['button_title'] = lang('Edit');
     $this->data['title'] = lang('Edit topic');
     $this->data['descr'] = lang('Edit topic');
-    $this->load->helper(array('date', 'form'));
+    $this->load->helper('form');
     $this->action_name = 'edit';
     $this->render();
   }
@@ -158,7 +159,7 @@ class Home extends MY_Controller {
   function feed(){
     $this->data['posts'] = $this->forum_model->getPostsForDomain($this->domain_id, 30);
 
-    $this->load->helper(array('xml', 'date'));
+    $this->load->helper(array('xml'));
     $this->data['title'] = q($this->forum_model->getd('title', lang('Forum')));
     $this->data['page_description'] = $this->forum_model->getd('title');
     $this->data['encoding'] = 'utf-8';

@@ -18,4 +18,27 @@
     }
     echo '</table>';
   }
+
+  if ($topics){
+    echo '<table class="tbl">';
+    echo '<tr><th>';
+    echo lang('Latest topics');
+    echo '</th>';
+    echo '<th style="width:150px;text-align:right">&nbsp;';
+    echo '</tr>';
+    $i = 1;
+    foreach($topics as $row){
+      if ($i++ % 2 == 0){
+        echo '<tr>';
+      } else {
+        echo '<tr class="e">';
+      }
+      echo '<td>';
+        echo anchor('topic/'.$row['forum_id'].'/'.$row['id'].'/'.slug($row['title']), $row['title']);
+      echo '</td>';
+      echo topicDate(mysql_to_unix($row['updated']));
+      echo '</tr>';
+    }
+    echo '</table>';
+  }
 ?>

@@ -15,7 +15,7 @@ a{color:#231}
 .b{font-weight:bold}
 .error{color:#f00; font-weight:bold;}
 hr{border:none; border-top:1px solid #aeaeae}
-.tbl{width:100%}
+.tbl{width:100%; margin-bottom:2em;}
 .tbl tr.e{background-color:#ffffd0;}
 .tbl td, .tbl th{padding:5px 10px}
 .tbl th{background-color:#bfbf8f; text-align:left;}

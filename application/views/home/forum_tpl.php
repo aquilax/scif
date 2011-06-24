@@ -13,17 +13,6 @@ $pr .= '[ '.anchor('topic/'.$forum_id, lang('New topic')).' ]';
 $pr .= '</th>';
 $pr .= '</tr>';
 
-function topicDate($date){
-  if (time() - $date < 86400){
-    echo '<td class="ar b" title="'.lang('Updated in the last 24h').'">';
-  } else {
-    echo '<td class="ar">';
-  }
-  echo date('d.m.Y H:i', $date);
-  echo '</td>';
-  
-}
-
 echo '<table class="tbl">';
 echo $pr;
 if ($topics){
