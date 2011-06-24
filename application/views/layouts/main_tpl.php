@@ -21,6 +21,7 @@
   })();
 </script><?
   }
+  echo $header_text;
 ?>
 </head>
 <body itemscope="itemscope" itemtype="http://schema.org/WebPage">

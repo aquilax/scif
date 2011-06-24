@@ -31,6 +31,7 @@ class MY_Controller extends CI_Controller {
     $this->data['pre_posts'] = $this->forum_model->getd('pre_text');
     $this->data['post_posts'] = $this->forum_model->getd('post_text');
     $this->data['analytics'] = $this->forum_model->getd('analytics');
+    $this->data['header_text'] = $this->forum_model->getd('header_text');
 
     $this->data['title'] = 'Page Title';    
     $this->data['descr'] = 'Page Description';
