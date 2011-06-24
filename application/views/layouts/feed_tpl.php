@@ -18,7 +18,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
     <atom:link href="<?php echo current_url()?>" rel="self" type="application/rss+xml" />
 <?php foreach($posts as $entry): ?>
     <item>
-<?php $url = $entry['pid']?site_url('fm/nf/'.$entry['forum_id'].'/'.$entry['pid'].'#'.$entry['id']):site_url('fm/nf/'.$entry['forum_id'].'/'.$entry['id']); ?>
+<?php $url = $entry['pid']?site_url('topic/'.$entry['forum_id'].'/'.$entry['pid'].'#'.$entry['id']):site_url('topic/'.$entry['forum_id'].'/'.$entry['id']); ?>
       <title><?php echo xml_convert($entry['title'])?></title>
       <link><?php echo $url?></link>
       <guid><?php echo $url?></guid>
