@@ -87,7 +87,9 @@ class Home extends MY_Controller {
       'title' => $ptitle,
       'body' => '',
     );
-
+    if ($this->data['posts']){
+      $this->data['header_text'] .= '<link rel="canonical" href="'.site_url('topic/'.$forum_id.'/'.$topic_id.'/'.slug($this->data['posts'][0]['title'])).'" />';
+    }
     $this->load->helper('form');
     $this->render();
   }
@@ -168,6 +170,11 @@ class Home extends MY_Controller {
     $this->data['creator_email'] = 'example@example.com';
     $this->output->set_header("Content-Type: application/rss+xml");
     $this->load->view('layouts/feed_tpl', $this->data);
+  }
+
+  function sitemap(){
+    $this->data['all'] = $this->forum_model->getAllTopics($this->domain_id);
+    $this->load->view('layouts/sitemap_tpl', $this->data);
   }
 
 }

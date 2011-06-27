@@ -124,6 +124,18 @@ class Forum_Model extends CI_Model {
     return $query->result_array();
   }
 
+  public function getAllTopics($domain_id) {
+    $this->db->select('p.id, p.title, p.forum_id, p.updated');
+    $this->db->join('forum f', 'f.id = p.forum_id');
+    $this->db->where('f.domain_id', $domain_id);
+    $this->db->where('p.status', 1);
+    $this->db->where('p.pid', 0);
+    $this->db->order_by('p.created', 'DESC');
+    $this->db->limit($limit);
+    $query = $this->db->get('post p');
+    return $query;
+  }
+
 }
 
 ?>

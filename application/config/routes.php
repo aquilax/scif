@@ -45,6 +45,7 @@ $route['forum/(:any)'] = 'home/forum/$1';
 $route['topic/(:any)'] = 'home/topic/$1';
 $route['edit/(:any)'] = 'home/edit/$1';
 $route['feed/rss'] = 'home/feed';
+$route['sitemap.xml'] = 'home/sitemap';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

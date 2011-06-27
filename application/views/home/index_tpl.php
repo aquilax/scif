@@ -34,7 +34,8 @@
         echo '<tr class="e">';
       }
       echo '<td>';
-        echo anchor('topic/'.$row['forum_id'].'/'.$row['id'].'/'.slug($row['title']), $row['title']);
+        $link = $row['pid']?$row['pid'].'#'.$row['id']:$row['id'].'/'.slug($row['title']);
+        echo anchor('topic/'.$row['forum_id'].'/'.$link, $row['title']);
       echo '</td>';
       echo topicDate(mysql_to_unix($row['updated']));
       echo '</tr>';
