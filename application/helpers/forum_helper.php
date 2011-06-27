@@ -32,11 +32,14 @@ function slug($text){
 }
 
 function render($text){
+  //TODO: This should be array;
   //links
-  $text =  preg_replace('"\b(https://\S+)"', '<a target="_blank" rel="nofollow" href="$1">$1</a>', $text);
-  $text =  preg_replace('"\b(http://\S+)"', '<a target="_blank" rel="nofollow" href="$1">$1</a>', $text);
+  $text = preg_replace('"\b(https://\S+)"', '<a target="_blank" rel="nofollow" href="$1">$1</a>', $text);
+  $text = preg_replace('"\b(http://\S+)"', '<a target="_blank" rel="nofollow" href="$1">$1</a>', $text);
   //images
-  $text =  preg_replace('"i(http://\S+)"', '<img onclick="tgl(this)" onload="rsz(this)" alt="img" src="$1" />', $text);
+  $text = preg_replace('"i(http://\S+)"', '<img onclick="tgl(this)" onload="rsz(this)" alt="img" src="$1" />', $text);
+  //blockquote
+  $text = preg_replace('/^&gt; (.+)/', '<blockquote>$1</blockquote>', $text);
   return str_replace("\n", '<br />', $text);
 }
 
