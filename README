@@ -1,1 +1,10 @@
 scif stands for Simple anonymous CodeIgniter Forum engine.
+
+Features:
+
+- Multiple domains support
+- Forum RSS feed;
+- Tripcodes;
+- Topic editing for the owner;
+- Sitemap;
+- Skins;
