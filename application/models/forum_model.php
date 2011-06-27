@@ -131,7 +131,6 @@ class Forum_Model extends CI_Model {
     $this->db->where('p.status', 1);
     $this->db->where('p.pid', 0);
     $this->db->order_by('p.created', 'DESC');
-    $this->db->limit($limit);
     $query = $this->db->get('post p');
     return $query;
   }
