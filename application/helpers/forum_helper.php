@@ -39,7 +39,7 @@ function render($text){
   //images
   $text = preg_replace('"i(http://\S+)"', '<img onclick="tgl(this)" onload="rsz(this)" alt="img" src="$1" />', $text);
   //blockquote
-  $text = preg_replace('/^&gt; (.+)/', '<blockquote>$1</blockquote>', $text);
+  $text = preg_replace('/^&gt; (.+)/m', '<blockquote>$1</blockquote>', $text);
   return str_replace("\n", '<br />', $text);
 }
 
