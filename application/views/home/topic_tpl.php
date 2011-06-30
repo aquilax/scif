@@ -22,9 +22,16 @@ function tgl(elem, max) {
 </script>
 <?php
   if ($posts){
+    $first = TRUE;
     foreach($posts as $row){
       echo '<div class="topic">';
-        echo '<h3 id="'.$row['id'].'">'.q($row['title']).'</h3>';
+        echo '<h3 id="'.$row['id'].'">';
+        echo q($row['title']);
+        if ($first){
+          echo ' <div class="social"><g:plusone size="medium" count="false"></g:plusone></div>';
+          $first = FALSE;
+        }
+        echo '</h3>';
         echo '<div class="topi">';
           echo '<p>';
           if ($row['tripcode']){
@@ -41,6 +48,6 @@ function tgl(elem, max) {
   }
 
   $this->load->view('partials/post_form_tpl');
-
+  echo ' <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>';
 ?>
 
