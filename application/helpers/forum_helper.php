@@ -32,15 +32,27 @@ function slug($text){
 }
 
 function render($text){
-  //TODO: This should be array;
-  //links
-  $text = preg_replace('"\b(https://\S+)"', '<a target="_blank" rel="nofollow" href="$1">$1</a>', $text);
-  $text = preg_replace('"\b(http://\S+)"', '<a target="_blank" rel="nofollow" href="$1">$1</a>', $text);
-  //images
-  $text = preg_replace('"i(http://\S+)"', '<img onclick="tgl(this)" onload="rsz(this)" alt="img" src="$1" />', $text);
-  //blockquote
-  $text = preg_replace('/^&gt; (.+)/m', '<blockquote>$1</blockquote>', $text);
-  return str_replace("\n", '<br />', $text);
+  $repl = array(
+    '"\b(https://\S+)"' => '<a target="_blank" rel="nofollow" href="$1">$1</a>', //url
+    '"\b(http://\S+)"' => '<a target="_blank" rel="nofollow" href="$1">$1</a>', //url
+    '"i(http://\S+)"' => '<img onclick="tgl(this)" onload="rsz(this)" alt="img" src="$1" />', //img
+    '/^&gt; (.+)/m' => '<blockquote>$1</blockquote>', //blockquote
+  );
+  $text = preg_replace(array_keys($repl), array_values($repl), $text);
+  $o = '';
+  $a = explode("\n", $text);
+  foreach ($a as $row){
+    $row = trim($row);
+    if ($row){
+      $pre = substr($row, 0, 2);
+      if ($pre == '<b' || $pre == '<i'){
+        $o .= $row."\n";
+      } else {
+        $o .= '<p>'.$row."</p>\n";
+      }
+    }
+  }
+  return $o;
 }
 
 /**
