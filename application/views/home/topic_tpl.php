@@ -33,7 +33,7 @@ function tgl(elem, max) {
         }
         echo '</h3>';
         echo '<div class="topi">';
-          echo '<div>';
+          echo '<div class="meta">';
           if ($row['tripcode']){
             echo '[<b>'.$row['tripcode'].'</b>]';
             echo ' ['.anchor('edit/'.$row['forum_id'].'/'.$row['id'], lang('edit'), 'rel="nofollow"').']';
