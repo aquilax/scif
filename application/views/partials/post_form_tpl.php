@@ -2,7 +2,6 @@
   echo '<div id="post">';
   echo validation_errors();
   echo form_open(current_url().'#post');
-  echo '<div id="namef">'.lang('Leave thiz field empty').'<input type="text" name="name" value="" id="namef" /></div>'; 
   echo '<table>';
   echo '<tr>';
   echo '<td colspan="2">';
@@ -27,6 +26,7 @@
   echo form_submit('post', lang($button_title), 'onclick="this.disabled=true;this.form.submit()"');
   echo '</td>';
   echo '</table>';
+  echo '<div id="namef">'.lang('Leave thiz field empty').'<input type="text" name="name" value="" id="namef" /></div>'; 
   echo form_close();
   echo '</div>';
 ?>
