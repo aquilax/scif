@@ -69,6 +69,7 @@ class Home extends MY_Controller {
 
     if ($this->data['posts']){
       $ptitle = 'Re:'.$this->data['posts'][0]['title'];
+      $this->data['form_title'] = lang('Reply');
       $this->data['button_title'] = lang('Reply');
       $this->data['path']['topic/'.$forum_id.'/'.$topic_id] = $this->data['posts'][0]['title'];
       $this->data['title'] = q($this->data['posts'][0]['title']).' &raquo; '.q($this->data['forum']['title']);
@@ -77,6 +78,7 @@ class Home extends MY_Controller {
       $ptitle = '';
       $this->data['button_title'] = lang('Post');
       $this->data['path']['topic/'.$forum_id] = lang('New topic');
+      $this->data['form_title'] = lang('New topic');
       $this->data['title'] = lang('New topic').' &raquo; '.q($this->data['forum']['title']);
       $this->data['descr'] = lang('New topic').' - '.$this->data['forum']['title'];
     }
@@ -119,6 +121,8 @@ class Home extends MY_Controller {
     $this->data['button_title'] = lang('Edit');
     $this->data['title'] = lang('Edit topic');
     $this->data['descr'] = lang('Edit topic');
+    $this->data['form_title'] = lang('Edit topic');
+
     $this->load->helper('form');
     $this->action_name = 'edit';
     $this->render();

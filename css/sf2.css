@@ -1,0 +1,35 @@
+body, html{padding:0; margin:0}
+body{font-family:arial, serif;background-color: #b3b3b3; font-size:10pt }
+h1{margin:0 0 1em 0}
+h1 a{color:#231; text-decoration:none;font-size:1.4em}
+a{color:#428542}
+#forum{margin:0 10%; background-color:#fff; padding:1em}
+#forum ul{padding-left:1em; list-style-position:inside}
+#forum li{padding:0 4px;}
+#forum li:hover{background:#faa}
+#forum li ul li:hover{background:#faf}
+#post table {width:500px}
+#post input, #post textarea{width:100%}
+#post input.radio{width:auto}
+#post label{font-weight:bold}
+#namef{display:none}
+.ar{text-align:right}
+.b{font-weight:bold}
+.error{color:#f00; font-weight:bold;}
+hr{border:none; border-top:1px solid #aeaeae}
+.tbl{width:100%; margin-bottom:2em;}
+.tbl tr.e{background-color:#E6E6E6;}
+.tbl td, .tbl th{padding:5px 10px}
+.tbl th{background:#A67853; color: #fff;text-align:left;}
+.tbl td a:visited, .topi a:visited{color:#854268}
+.tbl th a{color:#020202}
+.tbl th a:hover{color:#fff}
+.topic{background-color:#e6e6e6}
+.topic h3{background-color: #A67853; color: #fff; padding: 5px 10px}
+.topi{padding:0 1em 1em 1em}
+.topi blockquote{background-color:#ffa; padding:1em;border: 1px dashed #bfbf8f}
+.social{float:right;}
+.meta{margin: 0 0 1em 0}
+#post em{color:#f00}
+#post{background-color: #e6e6e6; margin-top: 2em}
+#post table{margin: 0 1em 1em;}

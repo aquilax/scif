@@ -1,5 +1,6 @@
 <?php
-  echo '<div id="post">';
+  echo '<div id="post" class="topic">';
+  echo '<h3>'.$form_title.'</h3>';
   echo validation_errors();
   echo form_open(current_url().'#post');
   echo '<table>';
