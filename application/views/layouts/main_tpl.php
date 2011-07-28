@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <title><?php echo $title?></title> 
 <meta name="description" content="<?php echo q($descr)?>" />
-<link rel="stylesheet" type="text/css" media="screen" href="/css/sf2.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/sf3.css" />
 <link rel="alternate" type="application/rss+xml" title="<?php echo lang('Latest posts')?>" href="<?php echo site_url('feed/rss')?>" /> 
 <?php
   if ($analytics){
@@ -25,10 +25,9 @@
 ?>
 </head>
 <body itemscope="itemscope" itemtype="http://schema.org/WebPage">
-<div id="forum">
 <?php
 echo '<h1>'.anchor('/', $site_title).'</h1>';
-echo '<hr />';
+echo '<div id="forum">';
 if (isset($path) && count($path) > 1){
   echo '<div id="path" itemprop="breadcrumb">';
   $cnt = count($path);
