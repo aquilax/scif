@@ -29,7 +29,7 @@ class Forum_Model extends CI_Model {
   }
 
   public function getForumsForDomain($domain_id) {
-    $this->db->where('f.domain_id', $domain_id);
+    $this->db->where('f.domain_id', (int)$domain_id);
     $this->db->where('f.status >', 0);
     $this->db->order_by('f.sorder');
     $query = $this->db->get('forum f');
@@ -117,7 +117,7 @@ class Forum_Model extends CI_Model {
     $this->db->select('p.*');
     $this->db->join('forum f', 'f.id = p.forum_id');
     $this->db->where('f.domain_id', $domain_id);
-    $this->db->where('p.status', 1);
+    $this->db->where('p.status >', 0);
     $this->db->order_by('p.created', 'DESC');
     $this->db->limit($limit);
     $query = $this->db->get('post p');
@@ -128,7 +128,7 @@ class Forum_Model extends CI_Model {
     $this->db->select('p.id, p.title, p.forum_id, p.updated');
     $this->db->join('forum f', 'f.id = p.forum_id');
     $this->db->where('f.domain_id', $domain_id);
-    $this->db->where('p.status', 1);
+    $this->db->where('p.status >', 0);
     $this->db->where('p.pid', 0);
     $this->db->order_by('p.created', 'DESC');
     $query = $this->db->get('post p');
