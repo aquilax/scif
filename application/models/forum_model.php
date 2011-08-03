@@ -88,6 +88,9 @@ class Forum_Model extends CI_Model {
       'title' => $post['title'],
       'body' => $post['body'],
     );
+    $this->db->set('updated', 'CURRENT_TIMESTAMP', FALSE);
+    $this->db->where('id', (int)$forum_id);
+    $this->db->update('forum');
     if ($action == 'insert'){
       $data['forum_id'] = $forum_id;
       $data['pid'] = $topic_id;

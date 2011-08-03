@@ -26,8 +26,8 @@ if ($topics){
     echo '<td>';
       echo anchor('topic/'.$row['forum_id'].'/'.$row['id'].'/'.slug($row['title']), $row['title']);
     echo '</td>';
-    echo topicDate(mysql_to_unix($row['updated']));
-    
+    $date = $row['updated']?$row['updated']:$row['created'];
+    echo topicDate($date);
     echo '</tr>';
   }
 } else {

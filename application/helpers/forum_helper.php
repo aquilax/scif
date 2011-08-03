@@ -76,6 +76,10 @@ function mktripcode($pw){
 }
 
 function topicDate($date){
+  if (!$date){
+    return '<td></td>';
+  }
+  $date = mysql_to_unix($date);
   if (time() - $date < 86400){
     echo '<td class="ar b" title="'.lang('Updated in the last 24h').'">';
   } else {
