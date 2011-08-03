@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <title>404 Page Not Found</title>
 <style type="text/css">
@@ -55,8 +54,14 @@ p {
 </head>
 <body>
 	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
+    <h1><?php echo $heading; ?></h1><pre style="font-size:16px">
+ <b><?php echo strip_tags($message)?></b>
+        \   ^__^
+         \  (-O)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+</pre>
 	</div>
 </body>
 </html>

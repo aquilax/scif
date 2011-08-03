@@ -114,7 +114,7 @@ class Forum_Model extends CI_Model {
   }
 
   public function getPostsForDomain($domain_id, $limit = 30){
-    $this->db->select('p.*');
+    $this->db->select('p.*, f.id as fid, f.title as fname');
     $this->db->join('forum f', 'f.id = p.forum_id');
     $this->db->where('f.domain_id', $domain_id);
     $this->db->where('p.status >', 0);

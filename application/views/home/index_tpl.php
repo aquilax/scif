@@ -24,6 +24,7 @@
     echo '<tr><th>';
     echo lang('Latest topics');
     echo '</th>';
+    echo '<th>'.lang('Forum').'</th>';
     echo '<th style="width:150px;text-align:right">&nbsp;';
     echo '</tr>';
     $i = 1;
@@ -36,6 +37,9 @@
       echo '<td>';
         $link = $row['pid']?$row['pid'].'#'.$row['id']:$row['id'].'/'.slug($row['title']);
         echo anchor('topic/'.$row['forum_id'].'/'.$link, $row['title']);
+      echo '</td>';
+      echo '<td>';
+        echo anchor('forum/'.$row['fid'].'/0/'.slug($row['fname']), $row['fname']);
       echo '</td>';
       echo topicDate(mysql_to_unix($row['updated']));
       echo '</tr>';
