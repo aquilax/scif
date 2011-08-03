@@ -8,11 +8,11 @@
     $i = 1;
     foreach($forums as $row){
       if ($i++ % 2 == 0){
-        echo '<tr class="b">';
+        echo '<tr>';
       } else {
-        echo '<tr class="e b">';
+        echo '<tr class="e">';
       }
-      echo '<td>';
+      echo '<td class="b">';
         echo anchor('forum/'.$row['id'].'/0/'.slug($row['title']), $row['title']);
       echo '</td>';
       echo topicDate($row['updated']);
