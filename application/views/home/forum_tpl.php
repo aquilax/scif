@@ -13,7 +13,7 @@ $pr .= '[ '.anchor('topic/'.$forum_id, lang('New topic'), 'rel="nofollow"').' ]'
 $pr .= '</th>';
 $pr .= '</tr>';
 
-echo '<table class="tbl">';
+echo '<table itemscope="itemscope" itemtype="http://schema.org/ItemList" class="tbl">';
 echo $pr;
 if ($topics){
   $i = 1;
@@ -23,7 +23,7 @@ if ($topics){
     } else {
       echo '<tr class="e">';
     }
-    echo '<td>';
+    echo '<td itemprop="itemListElement">';
       echo anchor('topic/'.$row['forum_id'].'/'.$row['id'].'/'.slug($row['title']), $row['title']);
     echo '</td>';
     $date = $row['updated']?$row['updated']:$row['created'];
