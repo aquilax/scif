@@ -42,7 +42,7 @@ class Home extends MY_Controller {
 
     $this->data['forum_id'] = $forum_id;
     $this->data['title'] = q($this->data['forum']['title']);
-    $this->data['descr'] = ($this->data['forum']['body'])?$this->data['forum']['body']:$this->data['title'];
+    $this->data['descr'] = ($this->data['forum']['body'])?strip_tags($this->data['forum']['body']):$this->data['title'];
     $this->data['path']['forum/'.$forum_id] = $this->data['forum']['title'];
     $this->action_name = 'forum';
     $this->render();
