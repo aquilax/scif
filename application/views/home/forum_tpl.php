@@ -13,6 +13,10 @@ $pr .= '[ '.anchor('topic/'.$forum_id, lang('New topic'), 'rel="nofollow"').' ]'
 $pr .= '</th>';
 $pr .= '</tr>';
 
+if ($forum['body']){
+  echo '<p>'.$forum['body'].'</p>';
+}
+
 echo '<table itemscope="itemscope" itemtype="http://schema.org/ItemList" class="tbl">';
 echo $pr;
 if ($topics){

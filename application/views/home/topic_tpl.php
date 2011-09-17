@@ -25,10 +25,10 @@ function tgl(elem, max) {
     $first = TRUE;
     foreach($posts as $row){
       echo '<div itemscope="itemscope" itemtype="http://schema.org/Article" class="topic">';
-        echo '<h3 itemprop="name" id="'.$row['id'].'">';
+        echo '<h3 itemprop="name" id="p'.$row['id'].'">';
         echo q($row['title']);
         if ($first){
-          echo ' <div class="social"><g:plusone size="medium" count="false"></g:plusone></div>';
+          echo ' <span class="social"><g:plusone size="medium" count="false"></g:plusone></span>';
           $first = FALSE;
         }
         echo '</h3>';
@@ -39,7 +39,7 @@ function tgl(elem, max) {
             echo ' ['.anchor('edit/'.$row['forum_id'].'/'.$row['id'], lang('edit'), 'rel="nofollow"').']';
           }
           echo ' <em>'.date('d-m-Y H:i', mysql_to_unix($row['created'])).'</em>';
-          echo ' '.anchor(current_url().'#'.$row['id'], '#'.$row['id']);
+          echo ' '.anchor(current_url().'#p'.$row['id'], '#'.$row['id']);
           echo '</div>';
           echo '<div itemprop="articleBody">'.render(q($row['body'])).'</div>';
         echo '</div>';

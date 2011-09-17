@@ -42,7 +42,7 @@ class Home extends MY_Controller {
 
     $this->data['forum_id'] = $forum_id;
     $this->data['title'] = q($this->data['forum']['title']);
-    $this->data['descr'] = $this->data['title'];
+    $this->data['descr'] = ($this->data['forum']['body'])?$this->data['forum']['body']:$this->data['title'];
     $this->data['path']['forum/'.$forum_id] = $this->data['forum']['title'];
     $this->action_name = 'forum';
     $this->render();
@@ -73,7 +73,7 @@ class Home extends MY_Controller {
       $this->data['button_title'] = lang('Reply');
       $this->data['path']['topic/'.$forum_id.'/'.$topic_id] = $this->data['posts'][0]['title'];
       $this->data['title'] = q($this->data['posts'][0]['title']).' &raquo; '.q($this->data['forum']['title']);
-      $this->data['descr'] = $this->data['posts'][0]['title'];
+      $this->data['descr'] = $this->data['posts'][0]['body'];
     } else {
       $ptitle = '';
       $this->data['button_title'] = lang('Post');
