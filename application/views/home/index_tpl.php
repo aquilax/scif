@@ -3,6 +3,7 @@
     echo '<table class="tbl">';
     echo '<tr>';
       echo '<th>'.lang('Forums').'</th>';
+      echo '<th style="width:50px;text-align:right">'.lang('Topics').'</th>';
       echo '<th style="width:150px;text-align:right"></th>';
     echo '</tr>';
     $i = 1;
@@ -12,8 +13,12 @@
       } else {
         echo '<tr class="e">';
       }
-      echo '<td class="b">';
-        echo anchor('forum/'.$row['id'].'/0/'.slug($row['title']), $row['title']);
+      echo '<td>';
+        echo anchor('forum/'.$row['id'].'/0/'.slug($row['title']), $row['title'], 'class="b"');
+        if ($row['body']){
+          echo '<br /><em>'.$row['body'].'</em>';
+        }
+      echo '<td class="ar">'.$row['topics'].'</td>';
       echo '</td>';
       echo topicDate($row['updated']);
       echo '</tr>';

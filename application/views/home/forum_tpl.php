@@ -8,6 +8,8 @@ if ($pages){
   $pr .= lang('Pages').': '.$pages;
 }
 $pr .= '</th>';
+$pr .= '<th style="width:50px;text-align:right">'.lang('Replies').'</th>';
+
 $pr .= '<th style="width:150px;text-align:right">';
 $pr .= '[ '.anchor('topic/'.$forum_id, lang('New topic'), 'rel="nofollow"').' ]';
 $pr .= '</th>';
@@ -30,6 +32,7 @@ if ($topics){
     echo '<td itemprop="itemListElement">';
       echo anchor('topic/'.$row['forum_id'].'/'.$row['id'].'/'.slug($row['title']), $row['title']);
     echo '</td>';
+    echo '<td class="ar">'.$row['topics'].'</td>';
     $date = $row['updated']?$row['updated']:$row['created'];
     echo topicDate($date);
     echo '</tr>';

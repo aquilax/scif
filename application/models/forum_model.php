@@ -89,6 +89,9 @@ class Forum_Model extends CI_Model {
       'body' => $post['body'],
     );
     $this->db->set('updated', 'CURRENT_TIMESTAMP', FALSE);
+    if (!$topic_id){
+      $this->db->set('topics', 'topics+1', FALSE);
+    }
     $this->db->where('id', (int)$forum_id);
     $this->db->update('forum');
     if ($action == 'insert'){
@@ -102,6 +105,7 @@ class Forum_Model extends CI_Model {
       $id = $this->db->insert_id();
       if($topic_id){
         $this->db->set('updated', 'CURRENT_TIMESTAMP', FALSE);
+        $this->db->set('topics', 'topics+1', FALSE);
         $this->db->where('id', $topic_id);
         $this->db->update('post');
       }
