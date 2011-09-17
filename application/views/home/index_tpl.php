@@ -16,7 +16,7 @@
       echo '<td>';
         echo anchor('forum/'.$row['id'].'/0/'.slug($row['title']), $row['title'], 'class="b"');
         if ($row['body']){
-          echo '<br /><em>'.$row['body'].'</em>';
+          echo '<br /><em style="margin:.2em 0 0 2em">'.$row['body'].'</em>';
         }
       echo '<td class="ar">'.$row['topics'].'</td>';
       echo '</td>';
