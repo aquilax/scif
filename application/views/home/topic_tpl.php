@@ -34,12 +34,16 @@ function tgl(elem, max) {
         echo '</h3>';
         echo '<div class="topi">';
           echo '<div class="meta">';
+            echo '<div class="fr">';
+            echo ' <em itemprop="dateCreated">'.date('d-m-Y H:i', mysql_to_unix($row['created'])).'</em>';
+            echo ' '.anchor(current_url().'#p'.$row['id'], '#'.$row['id']);
+            echo '</div>';
           if ($row['tripcode']){
             echo '[<b itemprop="author">'.$row['tripcode'].'</b>]';
             echo ' ['.anchor('edit/'.$row['forum_id'].'/'.$row['id'], lang('edit'), 'rel="nofollow"').']';
+          } else {
+            echo '&nbsp;';
           }
-          echo ' <em>'.date('d-m-Y H:i', mysql_to_unix($row['created'])).'</em>';
-          echo ' '.anchor(current_url().'#p'.$row['id'], '#'.$row['id']);
           echo '</div>';
           echo '<div class="txt" itemprop="articleBody">'.render(q($row['body'])).'</div>';
         echo '</div>';
