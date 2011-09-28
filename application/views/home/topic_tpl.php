@@ -41,7 +41,7 @@ function tgl(elem, max) {
           echo ' <em>'.date('d-m-Y H:i', mysql_to_unix($row['created'])).'</em>';
           echo ' '.anchor(current_url().'#p'.$row['id'], '#'.$row['id']);
           echo '</div>';
-          echo '<div itemprop="articleBody">'.render(q($row['body'])).'</div>';
+          echo '<div class="txt" itemprop="articleBody">'.render(q($row['body'])).'</div>';
         echo '</div>';
       echo '</div>';
     }
