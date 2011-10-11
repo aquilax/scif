@@ -31,9 +31,15 @@ class Forum_Model extends CI_Model {
   public function getForumsForDomain($domain_id) {
     $this->db->where('f.domain_id', (int)$domain_id);
     $this->db->where('f.status >', 0);
+    $this->db->order_by('f.group_name');
     $this->db->order_by('f.sorder');
     $query = $this->db->get('forum f');
-    return $query->result_array();
+    $res = $query->result_array();
+    $ary = array();
+    foreach ($res as $row){
+      $ary[$row['group_name']][] = $row;
+    }
+    return $ary;
   }
 
   public function getForum($forum_id){

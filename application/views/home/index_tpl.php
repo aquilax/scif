@@ -1,29 +1,34 @@
 <?php
   if ($forums){
-    echo '<table class="tbl">';
-    echo '<tr>';
-      echo '<th>'.lang('Forums').'</th>';
-      echo '<th style="width:50px;text-align:right">'.lang('Topics').'</th>';
-      echo '<th style="width:150px;text-align:right"></th>';
-    echo '</tr>';
-    $i = 1;
-    foreach($forums as $row){
-      if ($i++ % 2 == 0){
-        echo '<tr>';
-      } else {
-        echo '<tr class="e">';
+    foreach ($forums as $group_name => $forums_list){
+      if ($group_name) {
+        echo '<h2>'.$group_name.'</h2>';
       }
-      echo '<td>';
-        echo anchor('forum/'.$row['id'].'/0/'.slug($row['title']), $row['title'], 'class="b"');
-        if ($row['body']){
-          echo '<br /><em style="margin:.2em 0 0 2em">'.$row['body'].'</em>';
-        }
-      echo '<td class="ar">'.$row['topics'].'</td>';
-      echo '</td>';
-      echo topicDate($row['updated']);
+      echo '<table class="tbl">';
+      echo '<tr>';
+        echo '<th>'.lang('Forums').'</th>';
+        echo '<th style="width:50px;text-align:right">'.lang('Topics').'</th>';
+        echo '<th style="width:150px;text-align:right"></th>';
       echo '</tr>';
+      $i = 1;
+      foreach($forums_list as $row){
+        if ($i++ % 2 == 0){
+          echo '<tr>';
+        } else {
+          echo '<tr class="e">';
+        }
+        echo '<td>';
+          echo anchor('forum/'.$row['id'].'/0/'.slug($row['title']), $row['title'], 'class="b title"');
+          if ($row['body']){
+            echo '<br /><em style="margin:.2em 0 0 2em">'.$row['body'].'</em>';
+          }
+        echo '<td class="ar">'.$row['topics'].'</td>';
+        echo '</td>';
+        echo topicDate($row['updated']);
+        echo '</tr>';
+      }
+      echo '</table>';
     }
-    echo '</table>';
   }
 
   if ($topics){
