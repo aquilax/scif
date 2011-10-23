@@ -30,7 +30,7 @@ if ($topics){
       echo '<tr class="e">';
     }
     echo '<td itemprop="itemListElement">';
-      echo anchor('topic/'.$row['forum_id'].'/'.$row['id'].'/'.slug($row['title']), $row['title']);
+      echo anchor('topic/'.$row['forum_id'].'/'.$row['id'].'/'.slug($row['title']), $row['title'], 'class="title"');
     echo '</td>';
     echo '<td class="ar">'.$row['topics'].'</td>';
     $date = $row['updated']?$row['updated']:$row['created'];

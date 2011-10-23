@@ -1,7 +1,7 @@
 <script type="text/javascript">
 function rsz(elem, max) {
   if (elem == undefined || elem == null) return false;
-  if (max == undefined) max = 100;
+  if (max == undefined) max = 320;
   if (elem.width > elem.height) {
     if (elem.width > max) elem.width = max;
   } else {
