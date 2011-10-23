@@ -155,7 +155,7 @@ class Home extends MY_Controller {
       
       $id = $this->forum_model->save($forum_id, $topic_id, $_POST, $action);
       if($topic_id){
-        redirect('topic/'.$forum_id.'/'.$topic_id.'#'.$id);
+        redirect('topic/'.$forum_id.'/'.$topic_id.'#p'.$id);
       } else {
         redirect('topic/'.$forum_id.'/'.$id);
       }
