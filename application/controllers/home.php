@@ -181,6 +181,11 @@ class Home extends MY_Controller {
     $this->load->view('layouts/sitemap_tpl', $this->data);
   }
 
+  function search(){
+    $this->data['title'] = lang('Search');
+    $this->render();
+  }
+
 }
 
 ?>
