@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title><?php echo $title?></title> 
 <meta name="description" content="<?php echo q($descr)?>" />
-<link rel="stylesheet" type="text/css" media="screen" href="/css/sf3.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/sf4.css" />
 <link rel="alternate" type="application/rss+xml" title="<?php echo lang('Latest posts')?>" href="<?php echo site_url('feed/rss')?>" /> 
 <?php
   if ($analytics){

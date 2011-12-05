@@ -33,6 +33,7 @@ function tgl(elem, max) {
         }
         echo '</h3>';
         echo '<div class="topi">';
+          echo '<div class="txt" itemprop="articleBody">'.render(q($row['body'])).'</div>';
           echo '<div class="meta">';
             echo '<div class="fr">';
             echo ' <em itemprop="dateCreated">'.date('d-m-Y H:i', mysql_to_unix($row['created'])).'</em>';
@@ -45,7 +46,6 @@ function tgl(elem, max) {
             echo '&nbsp;';
           }
           echo '</div>';
-          echo '<div class="txt" itemprop="articleBody">'.render(q($row['body'])).'</div>';
         echo '</div>';
       echo '</div>';
     }
