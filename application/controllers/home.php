@@ -148,7 +148,7 @@ class Home extends MY_Controller {
       
       if ($action == 'edit'){
         if ($tripcode != $_POST['password']){
-          $this->form_validation->_error_array[] = lang('Wrong password');
+          //$this->form_validation->_error_array[] = lang('Wrong password');
           return;
         }
       }

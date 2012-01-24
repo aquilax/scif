@@ -11,7 +11,7 @@ $pr .= '</th>';
 $pr .= '<th style="width:50px;text-align:right">'.lang('Replies').'</th>';
 
 $pr .= '<th style="width:150px;text-align:right">';
-$pr .= '[ '.anchor('topic/'.$forum_id, lang('New topic'), 'rel="nofollow"').' ]';
+$pr .= '[ '.anchor('topic/'.$forum_id, lang('New topic'), 'rel="nofollow" class="new_topic"').' ]';
 $pr .= '</th>';
 $pr .= '</tr>';
 

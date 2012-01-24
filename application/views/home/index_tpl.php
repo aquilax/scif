@@ -47,7 +47,7 @@
         echo '<tr class="e">';
       }
       echo '<td>';
-        $link = $row['pid']?$row['pid'].'#'.$row['id']:$row['id'].'/'.slug($row['title']);
+        $link = $row['pid']?$row['pid'].'#p'.$row['id']:$row['id'].'/'.slug($row['title']);
         echo anchor('topic/'.$row['forum_id'].'/'.$link, $row['title']);
       echo '</td>';
       echo '<td class="b">';

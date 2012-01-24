@@ -71,9 +71,9 @@ class Forum_Model extends CI_Model {
   }
 
   public function getPosts($topic_id){
-    $this->db->where('status', 1);
     $this->db->where('id', $topic_id);
     $this->db->or_where('pid', $topic_id);
+    $this->db->where('status', 1);
     $this->db->order_by('pid');
     $this->db->order_by('created');
     $query = $this->db->get('post p');
