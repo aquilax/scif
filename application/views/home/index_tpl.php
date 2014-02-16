@@ -23,7 +23,6 @@
             echo '<br /><em style="margin:.2em 0 0 2em">'.$row['body'].'</em>';
           }
         echo '<td class="ar">'.$row['topics'].'</td>';
-        echo '</td>';
         echo topicDate($row['updated']);
         echo '</tr>';
       }
