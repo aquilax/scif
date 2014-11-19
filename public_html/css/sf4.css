@@ -41,3 +41,4 @@ h2{color:#D14836; margin-bottom: .2em}
 .tbl th a.new_topic{color: #f00;}
 .thumb{cursor: pointer;}
 .video_frame{border:none; width:560px; height:315px;}
+pre{background: #efefef;padding: 1em;border: 1px solid #cecece;overflow-x: auto;}

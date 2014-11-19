@@ -110,6 +110,13 @@ function render_new($text) {
         $tokens[$token] = sprintf('<blockquote>%s</blockquote>', q($text));
         return $token;
     }, $text);
+    // PRE
+    $text = preg_replace_callback('/`{3,}(.+)`{3,}/s', function ($matches) use (&$tokens) {
+        $text = $matches[1];
+        $token = token();
+        $tokens[$token] = sprintf('<pre>%s</pre>', q($text));
+        return $token;
+    }, $text);
     $text = q($text);
     $texta = explode("\n", $text);
     array_walk($texta, function(&$line) {
