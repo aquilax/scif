@@ -33,7 +33,7 @@ function tgl(elem, max) {
         }
         echo '</h3>';
         echo '<div class="topi">';
-          echo '<div class="txt" itemprop="articleBody">'.render(q($row['body'])).'</div>';
+          echo '<div class="txt" itemprop="articleBody">'.render($row['body']).'</div>';
           echo '<div class="meta">';
             echo '<div class="fr">';
             echo ' <em itemprop="dateCreated">'.date('d-m-Y H:i', mysql_to_unix($row['created'])).'</em>';
@@ -59,4 +59,28 @@ function tgl(elem, max) {
     po.src = 'https://apis.google.com/js/plusone.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
+// Find all the YouTube video embedded on a page
+var videos = document.getElementsByClassName("youtube"); 
+ 
+for (var i=0; i<videos.length; i++) {
+  
+  var youtube = videos[i];
+  var videoId = youtube.getAttribute('data-video');
+
+  // Attach an onclick event to the YouTube Thumbnail
+  youtube.onclick = function() {
+ 
+    // Create an iFrame with autoplay set to true
+    var iframe = document.createElement("iframe");
+    iframe.setAttribute("src",
+          "https://www.youtube.com/embed/" + videoId
+        + "?autoplay=1&autohide=1&border=0&wmode=opaque&enablejsapi=1"); 
+    
+    // The height and width of the iFrame should be the same as parent
+    iframe.className = 'video_frame' 
+    // Replace the YouTube thumbnail with YouTube HTML5 Player
+    this.parentNode.replaceChild(iframe, this);
+ 
+  }; 
+}
 </script>

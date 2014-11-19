@@ -39,3 +39,5 @@ h2{color:#D14836; margin-bottom: .2em}
 .txt{font-family: Verdana, Georgia, "Trebuchet MS", Arial, Serif;font-size: 14px; padding: 0 1em}
 .fr{float:right}
 .tbl th a.new_topic{color: #f00;}
+.thumb{cursor: pointer;}
+.video_frame{border:none; width:560px; height:315px;}

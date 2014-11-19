@@ -18,6 +18,8 @@ $lang = array(
   'Latest topics' => 'Последни теми',
   'Topics' => 'Теми',
   'Replies' => 'Отговори',
+  'Image' => 'Картинка',
+  'Quote' => 'Цитат',
 );
 
 ?>

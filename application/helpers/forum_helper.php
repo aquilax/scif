@@ -31,7 +31,11 @@ function slug($text){
   return substr($str1, 0, 90);
 }
 
-function render($text){
+function render($text) {
+    return render_new($text);
+}
+
+function render_old($text){
   $repl = array(
     '"\b(https://\S+)"' => '<a target="_blank" rel="nofollow" href="$1">$1</a>', //url
     '"\b(http://\S+)"' => '<a target="_blank" rel="nofollow" href="$1">$1</a>', //url
@@ -53,6 +57,68 @@ function render($text){
     }
   }
   return $o;
+}
+
+function token() {
+    return '$-$'.microtime().'$-$';
+}
+
+function isYouTube($url) {
+    if (strpos($url, 'youtube.com/watch') !== FALSE) {
+        parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
+        return $my_array_of_vars['v']; 
+    }
+    return FALSE;
+}
+
+function render_new($text) {
+    $tokens = array();
+    // LINKS
+    $text = preg_replace_callback('"\b(http[s]*://\S+)"', function ($matches) use (&$tokens) {
+        $url = $matches[1];
+        if (!filter_var($url, FILTER_VALIDATE_URL)) {
+            return $url;
+        }
+        $label = $url;
+        $len = strlen($url);
+        if ( $len > 80) {
+            $label = substr($url, 0, 79).'&hellip;'.substr($url, $len - 10);
+        }
+        $token = token();
+        $youtube = isYouTube($url);
+        if ($youtube) {
+            $tokens[$token] = sprintf('<div data-video="%s" class="youtube"><img src="http://i.ytimg.com/vi/%s/hqdefault.jpg" class="thumb" alt="thumb" /></div><br/><a href="%s" rel="nofollow" target="_blank">%s</a>', $youtube, $youtube, $url, $label);
+        } else {
+            $tokens[$token] = sprintf('<a href="%s" rel="nofollow" target="_blank">%s</a>', $url, $label);
+        }
+        return $token;
+    }, $text);
+    // IMAGES
+    $text = preg_replace_callback('"\bi(http[s]*://\S+)"', function ($matches) use (&$tokens) {
+        $url = $matches[1];
+        if (!filter_var($url, FILTER_VALIDATE_URL)) {
+            return $url;
+        }
+        $token = token();
+        $tokens[$token] = sprintf('<img onclick="tgl(this)" onload="rsz(this)" alt="img" class="resize" src="%s" />', $url);
+        return $token;
+    }, $text);
+    // BLOCKQUOTE
+    $text = preg_replace_callback('/^> (.+)/m', function ($matches) use (&$tokens) {
+        $text = $matches[1];
+        $token = token();
+        $tokens[$token] = sprintf('<blockquote>%s</blockquote>', q($text));
+        return $token;
+    }, $text);
+    $text = q($text);
+    $texta = explode("\n", $text);
+    array_walk($texta, function(&$line) {
+        if (trim($line)) {
+            $line = sprintf('<p>%s</p>', $line);
+        }
+    });
+    $text = str_replace(array_keys($tokens), $tokens, implode("\n", $texta));    
+    return $text;
 }
 
 /**

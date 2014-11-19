@@ -1,2 +1,14 @@
 User-agent: *
 Allow: /
+
+User-agent: WBSearchBot
+Disallow: /
+
+User-agent: AhrefsBot
+disallow: /
+
+User-agent: sistrix
+Disallow: /
+
+User-agent: spbot
+Disallow: /
